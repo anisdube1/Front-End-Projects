@@ -1,0 +1,272 @@
+
+<!doctype html>
+<html>
+<head>
+	<title>Code Player</title>
+	
+	<meta charset = "utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="A jouney of a thousand miles begins with a single step." />	
+
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+	<style>
+		body {
+			margin:0;
+			padding:0; /*
+			font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+			font-family: Arial, "Lucida Grande", sans-serif; 
+			font-family: "Consolas","Courier New", monospace, "Lucida Grande", sans-serif; */
+			font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+			font-size: 80%;
+		}
+		
+		button {
+			width: 60px;
+			height: 30px;
+		}
+		
+		#wrapper {
+			width:100%;
+		}
+		
+		#menuBar {
+			width:100%;
+			height: 40px;
+			background-color: #e0e0e0;
+			border: 1px solid grey;
+		}
+		
+		#logo {
+			font-size:1.6em;
+			font-weight: bold;
+			padding: 5px 0 0 20px;
+			float: left;
+		}
+		#buttonDiv {
+			float: right;
+			padding: 5px 10px 0 0;
+		}
+		
+		#btnWrapperDiv { /* a button set is inline-block and cannot be centered
+						  so I am using a wrapper div around the buttonset div. */
+			margin:5px auto;
+			width:260px;
+		}
+		
+		.toggle {
+			padding: 0 5px;
+		}
+		
+		.clear {
+			clear: both;
+		}
+		
+		.codeContainer {
+			height:100%;
+			width:50%;
+			float:left;
+			position:relative;
+		}
+		
+		.codeContainer textarea {
+			width:100%;
+			height:100%;
+			border-right: 1px solid grey;
+			font-family: "Consolas","Courier New", monospace, "Lucida Grande", sans-serif; 
+			font-size:90%;
+			box-sizing: border-box; /* to avoid adding padding 
+									or margin sizes to the width 
+									and height of the active div */
+			padding: 25px 10px 10px 10px;
+		}
+		
+		.codeLabel {
+			position: absolute;
+			right:10px;
+			top:10px;
+		}
+		
+		#CSSContainer, #JSContainer {
+			display:none;
+		}
+		
+		iframe {
+			height: 100%;
+			width: 100%;
+			position: relative;
+			left: 20px;
+			border: none;
+		}
+	</style>
+	
+</head>
+	
+<body>
+	
+<div id="wrapper">
+
+	<div id="menuBar">
+		<div id="logo">CodePlayer</div>
+		<div id="buttonDiv">
+			<button id="runButton">Run</button>
+		</div>
+
+		<div id="btnWrapperDiv">
+			<div id="checkBoxSet">
+				<input type="checkbox" class="toggle" id="HTML"><label for="HTML">HTML</label>
+				<input type="checkbox" class="toggle" id="CSS"><label for="CSS">CSS</label>
+				<input type="checkbox" class="toggle" id="JS"><label for="JS">JS</label>
+				<input type="checkbox" class="toggle" id="Result"><label for="Result">Result</label>
+			</div>
+		</div>
+
+	</div>
+	
+	<div class="clear"></div>
+	
+	<div class="codeContainer" id="HTMLContainer">
+		<div class="codeLabel">HTML</div>
+		<textarea id="htmlCode">
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;title&gt;CodePlayer Example&lt;/title&gt;
+
+	&lt;meta charset="utf-8" /&gt;
+	&lt;meta http-equiv="Content-type" content="text/html;
+		  charset=utf-8" /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div&gt;
+	&lt;h1&gt;CodePlayer Example&lt;/h1&gt;
+	&lt;p&gt;This is some paragraph text. This text along
+	with the heading above is shown in a box horizontally
+	centred on the page. The box position is set in the
+	css part of the code.
+	&lt;/p&gt;
+	&lt;p&gt;&lt;a href="http://www.imfadesign.com/w3course/js/">
+	Link to my reaction tester page...&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+		</textarea>
+	</div>
+
+	<div class="codeContainer" id="CSSContainer">
+		<div class="codeLabel">CSS</div>
+		<textarea id="cssCode">
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
+body {
+   margin: 0;
+   padding: 0;
+   font-family: "Open Sans", "Helvetica Neue", 
+				Helvetica, Arial, sans-serif; 
+	}
+
+div {
+   width: 300px;
+   margin: 125px auto;
+   padding: 20px;
+   background-color: #f0f0f0;
+   border: 1px solid orange;
+   border-radius: 1.25em;
+}
+
+a:link, a:visited {
+	color: #38488f;
+	text-decoration: none;
+}
+		</textarea>
+	</div>
+
+	<div class="codeContainer" id="JSContainer">
+		<div class="codeLabel">JS</div>
+		<!--<textarea id="jsCode">alert("hello there");</textarea> -->
+		<textarea id="jsCode">Some javascript here ... </textarea>
+	</div>
+
+	<div class="codeContainer" id="ResultContainer">
+		<div class="codeLabel">Result</div>
+		<iframe id="resultFrame"></iframe>
+	</div>
+
+
+</div>
+
+
+<script>
+	
+	$(function() {
+		$( "button" ).button();
+		$( '#HTML' ).prop("checked",true);
+		$( '#Result' ).prop("checked",true);
+		$( "#checkBoxSet" ).buttonset();
+		
+	});
+	
+	var windowHeight=$(window).height(); // height of the window
+	var menuBarHeight=$("#menu").height();
+	var codeContainerHeight = windowHeight-menuBarHeight;
+	$(".codeContainer").height(codeContainerHeight+"px");
+	
+	$(".toggle").change( function() {
+		if ( $(this).is(':checked')) {
+			$(this).prop("checked",true);
+			// alert($(this).prop('id')+" is checked");
+		}
+		
+		// toggle can also be used display or not the larger
+		// div areas
+		// We first find the activeDiv
+		var activeDiv = $(this).prop('id');
+		// the html content of an activeDiv is from among
+		// HTML, CSS, JS, Result
+		$("#"+activeDiv+"Container").toggle();
+		
+		// find out how many of the codeContainers are active, so that
+		// we could divide the width into those codeContainers equally.
+		// We define a variable showingDivs
+		// we loop through all divs with class codeContainer
+		// and filter them according to a function
+		// that function in our case will find if the div is
+		// displayed or not.
+		// and then we find out the length of resulting array
+		var showingDivs=$(".codeContainer").filter( function() {
+			return($(this).css("display") != "none");
+		}).length;
+		
+		// alert(showingDivs); // see if the above is working
+		
+		// calculate the width of a div depending upon how many divs are
+		// being shown
+		var  width = 100/showingDivs;
+		$(".codeContainer").width(width+"%");
+
+	});
+	
+	// actual running of the code on our webpage
+	$("#runButton").click( function() {
+	
+		// test case
+		//$("iframe").contents().find("html").html("test");
+
+		// showing contents of html only
+		//$("iframe").contents().find("html").html($("#htmlCode").val());
+		
+		// showing contents of css and html
+		$("iframe").contents().find("html").html('<style>'+$("#cssCode").val()+'</style>'+$("#htmlCode").val());
+		
+	
+	});
+	
+</script>
+
+</body>
+</html>
